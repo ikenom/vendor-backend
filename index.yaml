@@ -265,4 +265,34 @@ entries:
     urls:
     - https://github.com/ikenom/ecommerce-store-front/releases/download/ecommerce-store-front-0.0.2/ecommerce-store-front-0.0.2.tgz
     version: 0.0.2
+  vendor-backend:
+  - apiVersion: v2
+    appVersion: d4f42452eace9c3458af08243574bb3bb1986678
+    created: "2021-03-28T00:46:40.928798344Z"
+    dependencies:
+    - name: ecommerce-store-front
+      repository: https://ikenom.github.io/ecommerce-store-front
+      version: ~0.0.1
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~10.3.6
+    - name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~8.6.3
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~12.8.3
+    description: A Helm chart for Kubernetes
+    digest: 75c2619681a3093fc33191518dc8fbefc0e0cebf2d3fbc4aa5a190c7e2c426ca
+    name: vendor-backend
+    type: application
+    urls:
+    - https://github.com/ikenom/vendor-backend/releases/download/vendor-backend-0.0.2/vendor-backend-0.0.2.tgz
+    version: 0.0.2
 generated: "2021-02-07T04:48:26.470274851Z"
