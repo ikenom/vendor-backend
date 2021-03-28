@@ -1,5 +1,5 @@
 apiVersion: v2
-name: user-service
+name: vendor-backend
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -19,15 +19,22 @@ version: 0.0.1
 appVersion: latest
 
 dependencies:
+  - name: ecommerce-store-front
+    version: ~0.0.1
+    repository: https://ikenom.github.io/ecommerce-store-front
+
   - name: mongodb
     version: ~10.3.6
     repository: https://charts.bitnami.com/bitnami
-    condition: mongodb.enabled
     tags:
-      - mongodb
+      - vendor-backend-dev
   - name: rabbitmq
     version: ~8.6.3
     repository: https://charts.bitnami.com/bitnami
-    condition: rabbitmq.enabled
     tags:
-      - rabbitmq
+      - vendor-backend-dev
+  - name: redis
+    version: ~12.8.3
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - vendor-backend-dev

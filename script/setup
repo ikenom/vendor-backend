@@ -9,3 +9,4 @@ kubectl create secret docker-registry ikenom-gh-reg \
     --namespace $CLUSTER_NAMESPACE
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add ecommerce-store-front https://ikenom.github.io/ecommerce-store-front/

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "user-service.fullname" . }}-sneakers
+  name: {{ include "vendor-backend.fullname" . }}-sneakers
   labels:
-    {{- include "user-service.labels" . | nindent 4 }}-sneakers
+    {{- include "vendor-backend.labels" . | nindent 4 }}-sneakers
 spec:
 {{- if not .Values.sneakers.autoscaling.enabled }}
   replicas: {{ .Values.sneakers.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "user-service.selectorLabels" . | nindent 6 }}-sneakers
+      {{- include "vendor-backend.selectorLabels" . | nindent 6 }}-sneakers
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "user-service.selectorLabels" . | nindent 8 }}-sneakers
+        {{- include "vendor-backend.selectorLabels" . | nindent 8 }}-sneakers
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "user-service.serviceAccountName" . }}
+      serviceAccountName: {{ include "vendor-backend.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -45,7 +45,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - configMapRef:
-                name: {{ include "user-service.fullname" . }}-configmap
+                name: {{ include "vendor-backend.fullname" . }}-configmap
           {{ if .Values.railsMasterKey }}
           env:
           - name: RAILS_MASTER_KEY

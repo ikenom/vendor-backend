@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "user-service.fullname" . }}-configmap
+  name: {{ include "vendor-backend.fullname" . }}-configmap
 data:
   RELEASE_NAME: {{ .Release.Name }}
   RABBITMQ_USERNAME: {{ .Values.rabbitmq.auth.username }}

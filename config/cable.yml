@@ -1,0 +1,11 @@
+---
+development:
+  adapter: redis
+  channel_prefix: vendor_backend_development
+  url: "<%= RedisUriBuilder.build %>"
+production:
+  adapter: redis
+  channel_prefix: vendor_backend_production
+  url: "<%= RedisUriBuilder.build %>"
+test:
+  adapter: test

@@ -4,7 +4,7 @@ COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 ENV GEM_HOME /app/vendor/bundle
 
-RUN bundle install
+RUN bundle install --full-index
 RUN bundle binstubs rspec-core rubocop
 COPY . /app
 

@@ -4,7 +4,7 @@
 require "sneakers"
 
 release_name = ENV["RELEASE_NAME"].upcase
-release_name.sub! "-", "_"
+release_name.gsub! "-", "_"
 
 host = ENV["#{release_name}_RABBITMQ_SERVICE_HOST"]
 port = ENV["#{release_name}_RABBITMQ_SERVICE_PORT_AMQP"]
@@ -15,5 +15,5 @@ password = ENV["RABBITMQ_PASSWORD"]
 Sneakers.configure  heartbeat: 30,
                     amqp: "amqp://#{username}:#{password}@#{host}:#{port}",
                     vhost: "/",
-                    exchange: "sneakers-user-service",
+                    exchange: "sneakers-vendor-backend",
                     exchange_type: :direct

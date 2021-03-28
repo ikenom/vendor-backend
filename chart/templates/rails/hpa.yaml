@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "user-service.fullname" . }}-rails
+  name: {{ include "vendor-backend.fullname" . }}-rails
   labels:
-    {{- include "user-service.labels" . | nindent 4 }}-rails
+    {{- include "vendor-backend.labels" . | nindent 4 }}-rails
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "user-service.fullname" . }}-rails
+    name: {{ include "vendor-backend.fullname" . }}-rails
   minReplicas: {{ .Values.rails.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.rails.autoscaling.maxReplicas }}
   metrics:
