@@ -2,6 +2,7 @@ class Order
   include Mongoid::Document
 
   field :order_id, type: String
+  field :kitchen_fulfillment_id, type: String
   belongs_to :user
 
   after_create :notify_subscribers

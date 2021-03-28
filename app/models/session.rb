@@ -5,12 +5,22 @@ class Session
   belongs_to :user
 
   def needs_actions
+    orders(:KITCHEN, :SUBMITTED)
+  end
+
+  def in_kitchen
+    orders(:KITCHEN, :ACCEPTED)
+  end
+
+  private
+
+  def orders(fulfilment_type, fulfillment_request_status)
     after = nil
     has_next_page = true
     orders = []
 
     while has_next_page do
-      data = core_service.orders(:KITCHEN, :SUBMITTED, after: after)
+      data = core_service.orders(fulfilment_type, fulfillment_request_status, after: after)
       data.edges.each do |edge|
         orders << Order.build_from_core(edge.node)
       end
@@ -21,8 +31,6 @@ class Session
 
     orders
   end
-
-  private
 
   def core_service
     CoreService.new(jwt_token: jwt_token)

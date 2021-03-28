@@ -102,4 +102,21 @@ class CoreService
     }, context: { jwt_token: jwt_token })
     response.data.orders
   end
+
+  StartFulfillmentQuery = CoreServiceAPI::Client.parse <<-'GRAPHQL'
+    mutation($email: String!, $password: String!) {
+      login(input: {email: $email, password: $password}) {
+        token
+        user {
+          id
+        }
+      }
+    }
+  GRAPHQL
+
+  def start_fulfillment(fulfillment_id)
+    CoreServiceAPI::Client.query(StartFulfillmentQuery, variables: {
+      fulfillmentId: fulfillment_id
+    }, context: { jwt_token: jwt_token })
+  end
 end

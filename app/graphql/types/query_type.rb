@@ -10,5 +10,12 @@ module Types
       session = Session.find_by(jwt_token: context[:jwt_token])
       session.needs_actions
     end
+
+    field :in_kitchen, Types::OrderType.connection_type, null: false
+
+    def in_kitchen
+      session = Session.find_by(jwt_token: context[:jwt_token])
+      session.in_kitchen
+    end
   end
 end
