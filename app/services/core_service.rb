@@ -104,11 +104,11 @@ class CoreService
   end
 
   StartFulfillmentQuery = CoreServiceAPI::Client.parse <<-'GRAPHQL'
-    mutation($email: String!, $password: String!) {
-      login(input: {email: $email, password: $password}) {
-        token
-        user {
+    mutation($fulfillmentId: ID!) {
+      startFulfillment(input: {fulfillmentId: $fulfillmentId}) {
+        fulfillment {
           id
+          requestStatus
         }
       }
     }
@@ -116,6 +116,23 @@ class CoreService
 
   def start_fulfillment(fulfillment_id)
     CoreServiceAPI::Client.query(StartFulfillmentQuery, variables: {
+      fulfillmentId: fulfillment_id
+    }, context: { jwt_token: jwt_token })
+  end
+
+  CompleteFulfillmentQuery = CoreServiceAPI::Client.parse <<-'GRAPHQL'
+    mutation($fulfillmentId: ID!) {
+      completeFulfillment(input: {fulfillmentId: $fulfillmentId}) {
+        fulfillment {
+          id
+          requestStatus
+        }
+      }
+    }
+  GRAPHQL
+
+  def complete_fulfillment(fulfillment_id)
+    CoreServiceAPI::Client.query(CompleteFulfillmentQuery, variables: {
       fulfillmentId: fulfillment_id
     }, context: { jwt_token: jwt_token })
   end

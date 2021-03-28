@@ -3,9 +3,12 @@ class Order
 
   field :order_id, type: String
   field :kitchen_fulfillment_id, type: String
+  field :pickup_fulfillment_id, type: String
+  field :fulfillment_update_timestamp, type: String
   belongs_to :user
 
   after_create :notify_subscribers
+  after_update :notify_subscribers
 
   class << self
     def build_from_core(core_order)

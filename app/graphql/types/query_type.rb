@@ -17,5 +17,19 @@ module Types
       session = Session.find_by(jwt_token: context[:jwt_token])
       session.in_kitchen
     end
+
+    field :ready, Types::OrderType.connection_type, null: false
+
+    def ready
+      session = Session.find_by(jwt_token: context[:jwt_token])
+      session.ready
+    end
+
+    field :history, Types::OrderType.connection_type, null: false
+
+    def history
+      session = Session.find_by(jwt_token: context[:jwt_token])
+      session.history
+    end
   end
 end

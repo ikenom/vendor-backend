@@ -12,6 +12,14 @@ class Session
     orders(:KITCHEN, :ACCEPTED)
   end
 
+  def ready
+    orders(:PICKUP, :ACCEPTED)
+  end
+
+  def history
+    orders(:PICKUP, :CLOSED)
+  end
+
   private
 
   def orders(fulfilment_type, fulfillment_request_status)

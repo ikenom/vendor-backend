@@ -1,7 +1,7 @@
 dependencies:
 - name: ecommerce-store-front
   repository: https://ikenom.github.io/ecommerce-store-front
-  version: 0.0.13
+  version: 0.0.20
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 10.3.7
@@ -11,5 +11,5 @@ dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 12.8.3
-digest: sha256:ea71bbf02cecee3a04f9aaaa9a8794a33fd25491bc5fb79efdd1218e3bff44ad
-generated: "2021-03-27T03:25:49.675708-04:00"
+digest: sha256:836a35a55fb4d4d2d6c486a43b58a53b722d7ae67f1f5356516e94a9d41e27c9
+generated: "2021-03-28T03:00:48.063236-04:00"

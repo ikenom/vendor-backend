@@ -6,6 +6,10 @@ class OrderCreatedConsumer
   queue_name "consumer_vendor_backed_order_created"
 
   def process(message)
-    CreateOrderJob.perform_later(message[:user_id], message[:id], message[:kitchen_fulfillment_id])
+    CreateOrderJob.perform_later(
+      message[:user_id],
+      message[:id],
+      message[:kitchen_fulfillment_id],
+      message[:pickup_fulfillment_id])
   end
 end
