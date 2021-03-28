@@ -2,6 +2,35 @@ apiVersion: v1
 entries:
   vendor-backend:
   - apiVersion: v2
+    appVersion: b39e3d1c4da7e1d9d33f1ef31211cd2ff3bfb80b
+    created: "2021-03-28T08:30:38.064115845Z"
+    dependencies:
+    - name: ecommerce-store-front
+      repository: https://ikenom.github.io/ecommerce-store-front
+      version: ~0.0.1
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~10.3.6
+    - name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~8.6.3
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - vendor-backend-dev
+      version: ~12.8.3
+    description: A Helm chart for Kubernetes
+    digest: c1c95a1802c97e1c16d1e1f4056f1352679705042f50be673365ad1fe0474c22
+    name: vendor-backend
+    type: application
+    urls:
+    - https://github.com/ikenom/vendor-backend/releases/download/vendor-backend-0.0.4/vendor-backend-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: bcfa8ee62133c5a351e3bfb80bcdfb048761f4c6
     created: "2021-03-28T02:20:41.751548252Z"
     dependencies:
